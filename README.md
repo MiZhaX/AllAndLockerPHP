@@ -1,6 +1,6 @@
 <h1 align="center"> Tienda All&Locker </h1>
 <p align="center">
-   <img src="https://img.shields.io/badge/STATUS-FINALIZADO-green">
+   <img src="https://img.shields.io/badge/STATUS-EN_PROGRESO-yellow">
 </p>
 Sitio web creado con PHP usando el MVC. Se trata de un sitio web de una tienda, All&Locker, su función principal es la de gestionar los productos, los clientes y los pedidos.
 
