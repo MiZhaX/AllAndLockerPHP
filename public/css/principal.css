@@ -1,0 +1,42 @@
+.notification {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    background-color: var(--alt-color);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.notification.show {
+    opacity: 1;
+}
+
+h1 {
+    color: #333;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.navInicio {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.navInicio li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.navInicio li a {
+    text-decoration: none;
+    color: var(--alt-color);
+}
+
+.navInicio li a:hover {
+    text-decoration: underline;
+}

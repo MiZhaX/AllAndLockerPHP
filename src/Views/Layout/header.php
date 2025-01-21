@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="<?=BASE_URL?>public/css/header.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>public/css/main.css">
+    <link rel="stylesheet" href="<?=BASE_URL?>public/css/principal.css">
+    <script src="https://kit.fontawesome.com/c63f30e957.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <a id="boton-inicio" href="<?=BASE_URL?>"><img src="<?=BASE_URL?>public/img/logo.png" alt="logo" class="logo"></a>
+        <?php if (isset($_SESSION['user'])): ?>
+            <p>Bienvenido <?=$_SESSION['user']['nombre']?></p>
+        <?php endif;?>
+        <nav>
+            <ul class="navegacion">
+                <li><a href="<?=BASE_URL?>showAllProducts">PRODUCTOS</a></li>
+            </ul>
+            <ul class="opciones">
+            <?php if (!isset($_SESSION['user'])): ?>
+                <li><a href="<?=BASE_URL?>login">Log in</a></li>
+                <li><a href="<?=BASE_URL?>register">Register</a></li>
+            <?php else: ?>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin'): ?>
+                    <li><a href="<?=BASE_URL?>addProduct">Gestionar Productos</a></li>
+                    <li><a href="<?=BASE_URL?>adminCategory">Gestionar Categorías</a></li>
+                <?php endif;?>
+                <li><a href="<?=BASE_URL?>myOrders">Mis pedidos</a></li>
+                    <li><a href="<?=BASE_URL?>logout">Cerrar sesión</a></li>
+            <?php endif;?>
+            </ul>
+            <a href="<?=BASE_URL?>viewCart" id="boton-carrito"><i class="fa-solid fa-cart-shopping fa-2xl"></i></a>
+        </nav>
+        <?php if (isset($_SESSION['mensaje'])): ?>
+            <div id="notification" class="notification">
+                <?= $_SESSION['mensaje']; ?>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const notification = document.getElementById('notification');
+                    if (notification) {
+                        setTimeout(() => {
+                            notification.classList.add('show');
+                        }, 100); // Añadir un pequeño retraso para la animación
+                        setTimeout(() => {
+                            notification.style.display = 'none';
+                        }, 5000); // Desaparece después de 5 segundos
+                    }
+                });
+            </script>
+            <?php unset($_SESSION['mensaje']); ?>
+        <?php endif; ?>
+    </header>
+    

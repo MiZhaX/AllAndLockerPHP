@@ -1,0 +1,30 @@
+{
+    "name": "mishael/tienda",
+    "description": "Proyecto Tienda",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Mishael\\Tienda\\": "src/",
+            "Controllers\\": "./src/Controllers",
+            "Models\\": "./src/Models",
+            "Lib\\": "./src/Lib",
+            "Repositories\\": "./src/Repositories",
+            "Services\\": "./src/Services",
+            "Views\\": "./src/Views",
+            "Routes\\": "./src/Routes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mishael Bonel",
+            "email": "mbonelortiz@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "vlucas/phpdotenv": "^5.6",
+        "phpmailer/phpmailer": "^6.9",
+        "setasign/fpdf": "^1.8",
+        "stefangabos/zebra_pagination": "^2.4"
+    }
+}

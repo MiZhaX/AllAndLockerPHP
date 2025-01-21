@@ -1,0 +1,100 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--main-color);
+    color: var(--sec-color);
+    position: fixed;
+    z-index: 100; 
+    width: 100%;
+    height: 6rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+    font-family: var(--main-font);
+    font-size: large;
+    letter-spacing: 2px;
+    align-items: center;
+}
+
+.logo{
+    width: 100px;
+    height: 70px;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5rem;    
+}
+
+.navegacion {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.opciones, .navegacion {
+    list-style: none;
+}
+
+.opciones a, .navegacion a{
+    text-decoration: none;
+}
+
+.opciones a:visited, .navegacion a:visited{
+    color: white;
+}
+
+.opciones a:hover, .navegacion a:hover{
+    color: #f39c12;
+}
+
+.opciones a:link, .navegacion a:link{
+    color: white;
+}
+
+.notificaciones-container {
+    position: fixed;
+    top: 6.5rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    z-index: 1000;
+}
+
+.notificacion {
+    background-color: var(--alt-color);
+    color: white;
+    padding: 0.6rem;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    font-size: 1rem;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+    text-align: center;
+}
+
+.notificacion.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notificacion.fade-out {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+#boton-carrito{
+    color: white;
+    text-decoration: none;
+}
+
+#boton-carrito:visited {
+    color: white;
+}
+
+#boton-carrito:hover{
+    color: #f39c12;
+}
