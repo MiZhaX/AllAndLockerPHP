@@ -13,6 +13,7 @@ class OrderLineService {
         $this->orderLineRepository = new OrderLineRepository();
     }
 
+    // Guardar una línea de pedido
     public function addOrderLine(OrderLine $orderLine):bool {
         return $this->orderLineRepository->save($orderLine);
     }

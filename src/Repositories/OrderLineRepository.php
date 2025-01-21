@@ -14,6 +14,7 @@ class OrderLineRepository {
         $this->conexion = new BaseDatos();
     }
 
+    // Guardar una línea de pedido
     public function save(OrderLine $orderLine): bool {
         try {
             $insert = $this->conexion->prepare("INSERT INTO lineas_pedidos (pedido_id, producto_id, unidades) VALUES (:pedido_id, :producto_id, :unidades)");

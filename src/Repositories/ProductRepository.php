@@ -14,6 +14,7 @@ class ProductRepository{
         $this->conexion = new BaseDatos();
     }
 
+    // Obtener todos los productos
     public function getAllProducts():array {
         try{
             $select = $this->conexion->prepare("SELECT * FROM productos");
@@ -31,6 +32,7 @@ class ProductRepository{
         }
     }
 
+    // Guardar un producto
     public function save(Product $product):bool {
         try{
             $insert = $this->conexion->prepare("INSERT INTO productos (categoria_id, nombre, descripcion, precio, stock, oferta, fecha, imagen) VALUES (:categoria_id, :nombre, :descripcion, :precio, :stock, :oferta, :fecha, :imagen)");
@@ -58,6 +60,7 @@ class ProductRepository{
         
     }
 
+    // Obtener un producto por su ID
     public function getProductById(int $id):Product|bool {
         try{
             $query = $this->conexion->prepare("SELECT * FROM productos WHERE id = :id");
@@ -83,6 +86,7 @@ class ProductRepository{
         }
     }
 
+    // Obtener todos los productos de una categoría
     public function getProductByCategory(int $categoryId):array {
         try{
             $query = $this->conexion->prepare("SELECT * FROM productos WHERE categoria_id = :id");
@@ -100,6 +104,7 @@ class ProductRepository{
         }
     }
 
+    // Actualizar un producto
     public function update(Product $product): bool {
         try {
             $update = $this->conexion->prepare("UPDATE productos SET categoria_id = :categoria_id, nombre = :nombre, descripcion = :descripcion, precio = :precio, stock = :stock, oferta = :oferta, fecha = :fecha, imagen = :imagen WHERE id = :id");
@@ -126,6 +131,7 @@ class ProductRepository{
         }
     }
 
+    // Borrar un producto
     public function delete(int $id): bool {
         try {
             $delete = $this->conexion->prepare("DELETE FROM productos WHERE id = :id");

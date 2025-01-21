@@ -11,10 +11,12 @@ class UserService{
         $this->userRepository = new UserRepository();
     }
 
+    // Guardar usuario
     public function save(User $user){
         $this->userRepository->save($user);
     }
 
+    // Obtener un usuario por su correo
     public function getUserByEmail(string $email):User|bool {
         return $this->userRepository->getUserByEmail($email);
     }

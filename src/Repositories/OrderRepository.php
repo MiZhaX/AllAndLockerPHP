@@ -14,6 +14,7 @@ class OrderRepository {
         $this->conexion = new BaseDatos();
     }
 
+    // Guardar un pedido
     public function save(Order $pedido): bool {
         try {
             $insert = $this->conexion->prepare("INSERT INTO pedidos (usuario_id, provincia, localidad, direccion, coste, estado, fecha, hora) VALUES (:usuario_id, :provincia, :localidad, :direccion, :coste, :estado, :fecha, :hora)");
@@ -41,11 +42,13 @@ class OrderRepository {
         }
     }
 
+    // Obtener el ID del último pedido insertado
     public function lastInsertId(): int
     {
         return $this->conexion->lastInsertId();
     }
 
+    // Obtener todos los pedidos de un usuario
     public function getOrdersByUserID(int $userID): array {
         try {
             $query = $this->conexion->prepare("SELECT * FROM pedidos WHERE usuario_id = :usuario_id");

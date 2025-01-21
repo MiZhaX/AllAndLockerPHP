@@ -13,6 +13,7 @@ class UserRepository{
         $this->conexion = new BaseDatos();
     }
 
+    // Guardar un usuario
     public function save(User $user){
         try{
             $insert = $this->conexion->prepare("INSERT INTO usuarios (nombre, apellidos, email, password, rol) 
@@ -36,6 +37,7 @@ class UserRepository{
         }
     }
 
+    // Obtener un usuario por su correo
     public function getUserByEmail(string $email):User|bool {
         try{
             $query = $this->conexion->prepare("SELECT * FROM usuarios WHERE email = :email");

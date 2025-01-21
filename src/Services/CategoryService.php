@@ -13,10 +13,12 @@ class CategoryService {
         $this->categoryRepository = new CategoryRepository();
     }
 
+    // Obtener todas las categorías
     public function getAllCategories():array {
         return $this->categoryRepository->getAllCategories();
     }
 
+    // Guardar un producto
     public function addProduct(Category $category):bool {
         return $this->categoryRepository->save($category);
     }

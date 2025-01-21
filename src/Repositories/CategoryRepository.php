@@ -14,6 +14,7 @@ class CategoryRepository{
         $this->conexion = new BaseDatos();
     }
 
+    // Obtener todas las categorías
     public function getAllCategories():array {
         try{
             $select = $this->conexion->prepare("SELECT * FROM categorias");
@@ -31,6 +32,7 @@ class CategoryRepository{
         }
     }
 
+    // Guardar una categoría
     public function save(Category $category):bool {
         try{
             $insert = $this->conexion->prepare("INSERT INTO categorias (nombre) VALUES (:nombre)");

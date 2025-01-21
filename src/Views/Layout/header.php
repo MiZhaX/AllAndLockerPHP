@@ -51,10 +51,10 @@
                     if (notification) {
                         setTimeout(() => {
                             notification.classList.add('show');
-                        }, 100); // Añadir un pequeño retraso para la animación
+                        }, 100); 
                         setTimeout(() => {
                             notification.style.display = 'none';
-                        }, 5000); // Desaparece después de 5 segundos
+                        }, 5000); 
                     }
                 });
             </script>

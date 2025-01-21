@@ -25,8 +25,10 @@ class CategoryController
             if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 if($_POST['data']){
                     $category = Category::fromArray($_POST['data']);
+                    // Validar categoría
                     if($category->validate()){
                         try {                 
+                            // Añadir categoría
                             if($this->categoryService->addProduct($category)){
                                 $_SESSION['mensaje'] = 'Categoría añadida';
                                 header('Location: ' . BASE_URL . 'adminCategory');
@@ -44,6 +46,7 @@ class CategoryController
                     $_SESSION['errors'] = 'Error al agregar producto';
                 }
             } else {
+                // Mostrar vista de administración de categorías
                 $this->pages->render('Category/adminCategory', ['categories' => $categories]);
             }
         } else{

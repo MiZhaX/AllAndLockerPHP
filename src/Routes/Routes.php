@@ -16,6 +16,7 @@ class Routes{
             (new DashboardController())->index();
         });
 
+        // Rutas de usuario
         Router::add('GET', '/register', function(){
             (new AuthController())->register();
         });
@@ -36,6 +37,7 @@ class Routes{
             (new AuthController())->logout();
         });
 
+        // Rutas de producto
         Router::add('GET', '/showAllProducts', function(){
             (new ProductController())->showAllProducts();
         });
@@ -60,6 +62,7 @@ class Routes{
             (new ProductController())->deleteProduct();
         });
 
+        // Rutas de categoría
         Router::add('GET', '/adminCategory', function(){
             (new CategoryController())->adminCategory();
         });
@@ -68,6 +71,7 @@ class Routes{
             (new CategoryController())->adminCategory();
         });
 
+        // Rutas de carrito
         Router::add('GET', '/viewCart', function(){
             (new CarritoController())->viewCart();
         });
@@ -79,7 +83,16 @@ class Routes{
         Router::add('POST', '/emptyCart', function(){
             (new CarritoController())->emptyCart();
         });
+
+        Router::add('POST', '/removeFromCart', function(){
+            (new CarritoController())->removeFromCart();
+        });
+
+        Router::add('POST', '/updateCartQuantity', function(){
+            (new CarritoController())->updateCartQuantity();
+        });
         
+        // Rutas de pedido
         Router::add('POST', '/purchaseForm', function(){
             (new OrderController())->purchaseForm();
         });
@@ -92,14 +105,7 @@ class Routes{
             (new OrderController())->myOrders();
         });
 
-        Router::add('POST', '/removeFromCart', function(){
-            (new CarritoController())->removeFromCart();
-        });
-
-        Router::add('POST', '/updateCartQuantity', function(){
-            (new CarritoController())->updateCartQuantity();
-        });
-
+        // Rutas de errores
         Router::add('GET', '/not-found', function(){
             ErrorController::error404();
         });

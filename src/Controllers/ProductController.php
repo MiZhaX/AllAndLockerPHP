@@ -26,6 +26,7 @@ class ProductController
         try {
             $products = $this->productService->getAllProducts();
             $categories = $this->categoryService->getAllCategories();
+            // Mostrar todos los productos
             $this->pages->render('Product/allProducts', ['products' => $products, 'categories' => $categories]);
         } catch (Exception $e) {
             $_SESSION['errors'] = 'Error al mostrar productos';
@@ -44,8 +45,10 @@ class ProductController
                     $product = Product::fromArray($_POST['data']);
                     
                     $product->sanitize();
+                    // Validar producto
                     if ($product->validate()) {
                         try {
+                            // Añadir producto
                             if ($this->productService->addProduct($product)) {
                                 $_SESSION['mensaje'] = 'Producto añadido';
                                 header('Location: ' . BASE_URL . 'addProduct');
@@ -64,6 +67,7 @@ class ProductController
                     $_SESSION['errors'] = 'Error al agregar producto';
                 }
             } else {
+                // Mostrar formulario para añadir producto
                 $this->pages->render('Product/addProduct', ['products' => $products, 'categories' => $categories]);
             }
         } else {
@@ -77,8 +81,10 @@ class ProductController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['data'])) {
             $product = Product::fromArray($_POST['data']);
+            // Validar producto
             if ($product->validate()) {
                 try {
+                    // Actualizar producto
                     if ($this->productService->updateProduct($product)) {
                         $_SESSION['mensaje'] = 'Producto actualizado';
                         header('Location: ' . BASE_URL . 'addProduct');
@@ -103,6 +109,7 @@ class ProductController
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
             $productId = (int)$_POST['id'];
             try {
+                // Eliminar producto
                 if ($this->productService->deleteProduct($productId)) {
                     $_SESSION['mensaje'] = 'Producto eliminado';
                 } else {
@@ -124,6 +131,7 @@ class ProductController
         $categories = $this->categoryService->getAllCategories();
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($_POST['category']) {
+                // Filtrar productos por categoría
                 if($_POST['category'] == 'ALL'){
                     $this->pages->render('Product/allProducts', ['products' => $products, 'categories' => $categories]);
                 } else{
