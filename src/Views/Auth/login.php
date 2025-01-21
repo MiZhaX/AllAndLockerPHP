@@ -48,7 +48,7 @@
     #login input[type="submit"] {
         width: 100%;
         padding: 10px;
-        background-color: #007bff;
+        background-color: var(--alt-color);
         border: none;
         border-radius: 3px;
         color: white;
@@ -57,7 +57,7 @@
         font-weight: bold;
     }
     #login input[type="submit"]:hover {
-        background-color: #0056b3;
+        background-color: var(--alt-alt-color);
     }
     p {
         color: red;

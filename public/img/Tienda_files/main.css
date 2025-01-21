@@ -1,0 +1,30 @@
+:root{
+    --main-color: rgb(45, 45, 45);
+    --alt-main-color: rgb(20, 20, 20);
+    --sec-color: white;
+    --alt-color: #f39c12;
+    --alt-alt-color: #c58113;
+    --bg-color: #f7f7f7;
+
+    --main-font: futura-pt, sans-serif;
+    --sec-font: Roboto, sans-serif;
+}
+
+html {
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80rem, 1fr));
+    grid-gap: 0.5rem;
+    font-family: var(--sec-font);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}   
+
+section{
+    margin-top: 7rem;
+}

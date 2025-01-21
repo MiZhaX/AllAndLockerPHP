@@ -69,7 +69,7 @@
     #register input[type="submit"] {
         width: 100%;
         padding: 10px;
-        background-color: #28a745;
+        background-color: var(--alt-color);
         border: none;
         border-radius: 5px;
         color: white;
@@ -79,7 +79,7 @@
     }
 
     #register input[type="submit"]:hover {
-        background-color: #218838;
+        background-color: var(--alt-alt-color);
     }
 
     .error {
