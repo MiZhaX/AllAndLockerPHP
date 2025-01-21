@@ -103,6 +103,10 @@ class User
             self::$errores['password'] = 'La contraseña es obligatoria.';
         } elseif (strlen($this->password) < 6) {
             self::$errores['password'] = 'La contraseña debe tener al menos 6 caracteres.';
+        } elseif (!preg_match('/[A-Z]/', $this->password)) {
+            self::$errores['password'] = 'La contraseña debe tener al menos una letra mayúscula.';
+        } elseif (!preg_match('/[\W]/', $this->password)) {
+            self::$errores['password'] = 'La contraseña debe tener al menos un símbolo.';
         }
 
         return empty(self::$errores);

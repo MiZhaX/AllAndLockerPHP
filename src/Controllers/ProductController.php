@@ -91,6 +91,7 @@ class ProductController
                 }
             } else {
                 $_SESSION['errors'] = $product->getErrores();
+                header('Location: ' . BASE_URL . 'addProduct');
             }
         } else {
             $_SESSION['errors'] = 'Error al actualizar producto';
@@ -105,7 +106,7 @@ class ProductController
                 if ($this->productService->deleteProduct($productId)) {
                     $_SESSION['mensaje'] = 'Producto eliminado';
                 } else {
-                    $_SESSION['errors'] = 'Error al eliminar producto';
+                    $_SESSION['mensaje'] = 'Hay pedidos con este producto';
                 }
             } catch (Exception $e) {
                 $_SESSION['errors'] = 'Error al eliminar producto';
@@ -134,39 +135,6 @@ class ProductController
             }
         } else {
             $this->pages->render('Product/addProduct', ['products' => $products, 'categories' => $categories]);
-        }
-    }
-
-    public function orderProducts()
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_SESSION['cart'])) {
-            $cart = $_SESSION['cart'];
-            try {
-                foreach ($cart as $item) {
-                    $product = $this->productService->getProductById($item['id']);
-                    if ($product) {
-                        $newStock = $product->getStock() - $item['quantity'];
-                        if ($newStock >= 0) {
-                            $product->setStock($newStock);
-                            $this->productService->updateProduct($product);
-                        } else {
-                            $_SESSION['errors'] = 'Stock insuficiente para el producto: ' . $product->getName();
-                            header('Location: ' . BASE_URL . 'viewCart');
-                            return;
-                        }
-                    } else {
-                        $_SESSION['errors'] = 'Producto no encontrado';
-                        header('Location: ' . BASE_URL . 'viewCart');
-                        return;
-                    }
-                }
-            } catch (Exception $e) {
-                $_SESSION['errors'] = 'Error al procesar el pedido';
-                echo $e->getMessage();
-            }
-        } else {
-            $_SESSION['errors'] = 'Carrito no proporcionado';
-            header('Location: ' . BASE_URL . 'viewCart');
         }
     }
 }

@@ -67,7 +67,7 @@
         border: 1px solid #ddd;
     }
     .tabla th{
-        background-color: #4CAF50;
+        background-color: var(--alt-color);
         color: white;
     }
     .tabla tr:nth-child(even){
@@ -107,12 +107,12 @@
         padding: 0.75rem 1.5rem;
         border: none;
         border-radius: 5px;
-        background-color: #28a745;
+        background-color: var(--main-color);
         color: white;
         font-size: 1rem;
         cursor: pointer;
     }
     .agregar-categoria button:hover{
-        background-color: #218838;
+        background-color: var(--alt-main-color);
     }
 </style>

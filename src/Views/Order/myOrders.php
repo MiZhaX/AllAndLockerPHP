@@ -73,7 +73,7 @@
     }
 
     .tabla th {
-        background-color: #4CAF50;
+        background-color: var(--alt-color);
         color: white;
     }
 

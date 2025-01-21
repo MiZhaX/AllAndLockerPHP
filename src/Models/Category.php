@@ -42,8 +42,8 @@ class Category
     public function validate():bool {
         self::$errores = [];
         
-        if ($this->name == '') {
-            self::$errores['name'] = 'El nombre de la categoría no puede estar vacío';
+        if (trim($this->name) == '') {
+            self::$errores['name'] = 'El nombre de la categoría no puede estar vacío o contener solo espacios';
         }
         return empty(self::$errores);
     }

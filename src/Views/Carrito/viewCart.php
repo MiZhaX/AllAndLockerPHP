@@ -81,7 +81,7 @@
         border: 1px solid #ddd;
     }
     .tabla th {
-        background-color: #4CAF50;
+        background-color: var(--alt-color);
         color: white;
     }
     .tabla tr:nth-child(even) {
@@ -111,28 +111,28 @@
         margin-top: 20px;
     }
     .btn-vaciar {
-        background-color: #dc3545;
+        background-color: var(--main-color);
     }
     .btn-vaciar:hover {
-        background-color: #c82333;
+        background-color: var(--alt-main-color);
     }
     .btn-comprar {
-        background-color: #28a745;
+        background-color: var(--alt-color);
     }
     .btn-comprar:hover {
-        background-color: #218838;
+        background-color: var(--alt-alt-color);
     }
     .btn-eliminar {
-        background-color: #ffc107;
+        background-color: var(--main-color);
     }
     .btn-eliminar:hover {
-        background-color: #e0a800;
+        background-color: var(--alt-main-color);
     }
     .btn-quantity {
-        background-color: #007bff;
+        background-color: var(--main-color);
     }
     .btn-quantity:hover {
-        background-color: #0056b3;
+        background-color: var(--alt-main-color);
     }
     .form-quantity {
         display: flex;

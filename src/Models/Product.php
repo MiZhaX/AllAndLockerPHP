@@ -136,11 +136,11 @@ class Product
     {
         self::$errores = [];
 
-        if (empty($this->name)) {
+        if (empty(trim($this->name))) {
             self::$errores['nombre'] = 'El nombre del producto es obligatorio';
         }
 
-        if (empty($this->description)) {
+        if (empty(trim($this->description))) {
             self::$errores['descripcion'] = 'La descripción del producto es obligatoria';
         }
 
@@ -152,8 +152,10 @@ class Product
             self::$errores['stock'] = 'El stock no puede ser negativo';
         }
 
-        if ($this->oferta < 0 || $this->oferta > 100) {
-            self::$errores['oferta'] = 'La oferta no es válida';
+        if (isset($this->oferta) && $this->oferta != '') {
+            if($this->oferta < 0 || $this->oferta > 100) {
+                self::$errores['oferta'] = 'La oferta no es válida';
+            }
         }
 
         if (empty($this->category_id)) {
@@ -175,7 +177,6 @@ class Product
 
     public static function fromArray(array $data): Product
     {
-        var_dump($data);
         return new Product(
             (int)$data['id'] ?? null,
             (int)$data['categoria_id'] ?? null,

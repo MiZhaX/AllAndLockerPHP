@@ -93,7 +93,6 @@
             <span class="error"><?= $_SESSION['errors']['categoria_id'] ?></span>
             <?php endif; ?>
             <select name="data[categoria_id]" id="category_id">
-            <option value="">Seleccione una categoría</option>
             <?php foreach ($categories as $category): ?>
                 <option value="<?= $category['id'] ?>"><?= $category['nombre'] ?></option>
             <?php endforeach; ?>
@@ -120,6 +119,7 @@
         document.getElementById('description').value = product.descripcion;
         document.getElementById('price').value = product.precio;
         document.getElementById('stock').value = product.stock;
+        document.getElementById('oferta').value = product.oferta;
         document.getElementById('image').value = product.imagen;
         document.getElementById('category_id').value = product.categoria_id;
         document.getElementById('product-form').action = '<?= BASE_URL ?>editProduct';
@@ -154,7 +154,7 @@
     }
 
     .tabla th {
-        background-color: #4CAF50;
+        background-color: var(--alt-color);
         color: white;
     }
 
@@ -210,14 +210,14 @@
         padding: 0.75rem 1.5rem;
         border: none;
         border-radius: 5px;
-        background-color: #28a745;
+        background-color: var(--main-color);
         color: white;
         font-size: 1rem;
         cursor: pointer;
     }
 
     .agregar-producto button:hover {
-        background-color: #218838;
+        background-color: var(--alt-main-color);
     }
 
     .editarProducto,
@@ -232,19 +232,19 @@
     }
 
     .editarProducto {
-        background-color: #ffc107;
+        background-color: var(--alt-color);
     }
 
     .editarProducto:hover {
-        background-color: #e0a800;
+        background-color: var(--alt-alt-color);
     }
 
     .botonEliminar {
-        background-color: #dc3545;
+        background-color: var(--main-color);
     }
 
     .botonEliminar:hover {
-        background-color: #c82333;
+        background-color: var(--alt-main-color);
     }
 
     .error {

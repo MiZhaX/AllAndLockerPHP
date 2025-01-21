@@ -9,7 +9,6 @@ use Controllers\ProductController;
 use Controllers\CategoryController;
 use Controllers\CarritoController;
 use Controllers\OrderController;
-use Controllers\OrderLineController;
 
 class Routes{
     public static function index(){
@@ -86,9 +85,7 @@ class Routes{
         });
 
         Router::add('POST', '/finishOrder', function(){
-            (new ProductController())->orderProducts();
             (new OrderController())->finishOrder();
-            (new OrderLineController())->finishOrder();
         });
 
         Router::add('GET', '/myOrders', function(){

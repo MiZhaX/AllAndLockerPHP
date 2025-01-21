@@ -1,28 +1,29 @@
 <section class="purchase-form">
     <h2>Formulario de Envío</h2>
-    <form action="<?=BASE_URL?>finishOrder" method="POST">
+    <form action="<?=BASE_URL?>finishOrder" method="POST" class="form">
         <label for="provincia">Provincia</label>
-        <input type="text" name="data[provincia]" id="provincia">
         <?php if (isset($_SESSION['errors']['provincia'])): ?>
-            <span class="error"><?= $errors['provincia'] ?></span>
+            <span class="error"><?= $_SESSION['errors']['provincia'] ?></span>
         <?php endif; ?>
+        <input type="text" name="data[provincia]" id="provincia">
         <br><br>
         
         <label for="localidad">Localidad</label>
-        <input type="text" name="data[localidad]" id="localidad">
         <?php if (isset($_SESSION['errors']['localidad'])): ?>
-            <span class="error"><?= $errors['localidad'] ?></span>
+            <span class="error"><?= $_SESSION['errors']['localidad'] ?></span>
         <?php endif; ?>
+        <input type="text" name="data[localidad]" id="localidad">
         <br><br>
         
         <label for="direccion">Dirección</label>
-        <input type="text" name="data[direccion]" id="direccion">
         <?php if (isset($_SESSION['errors']['direccion'])): ?>
-            <span class="error"><?= $errors['direccion'] ?></span>
+            <span class="error"><?= $_SESSION['errors']['direccion'] ?></span>
         <?php endif; ?>
+        <input type="text" name="data[direccion]" id="direccion">
         <br><br>
         
         <button type="submit" class="btn-comprar">Confirmar Compra</button>
+        <?php unset($_SESSION['errors']);?>
     </form>
 </section>
 
@@ -55,23 +56,29 @@
     .purchase-form input[type="text"] {
         width: 100%;
         padding: 0.5rem;
-        margin-bottom: 1rem;
         border: 1px solid #ccc;
         border-radius: 5px;
+    }
+
+    .form{
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .btn-comprar {
         padding: 0.75rem 1.5rem;
         border: none;
         border-radius: 5px;
-        background-color: #28a745;
+        background-color: var(--alt-color);
         color: white;
         font-size: 1rem;
         cursor: pointer;
     }
 
     .btn-comprar:hover {
-        background-color: #218838;
+        background-color: var(--alt-alt-color);
     }
 
     .error {
